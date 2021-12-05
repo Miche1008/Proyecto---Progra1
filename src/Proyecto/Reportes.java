@@ -8,8 +8,21 @@ package Proyecto;
 import static Proyecto.Login.ArrayUsuarios;
 import static Proyecto.Login.rol;
 import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -17,21 +30,91 @@ import javax.swing.table.DefaultTableModel;
  * @author Miche
  */
 public class Reportes extends javax.swing.JFrame {
-    
+
+    File Archivo = new File("Bloc de notas");
+    String opción = "Nuevo";
+
     private int yMouse;
     private int xMouse;
 
     /**
      * Creates new form Reportes
      */
-
     ArrayList<Usuarios> ArrayUsuarios;
     DefaultTableModel Tabla;
-    
-    public Reportes() {
+
+    public Reportes() throws IOException {
         initComponents();
         ArrayUsuarios = new ArrayList<Usuarios>();
         Tabla = (DefaultTableModel) Tabla_de_Reportes.getModel();
+        verificarArchivo();
+    }
+
+    private void verificarArchivo() throws IOException {
+        if (!Archivo.exists()) {
+            Archivo.createNewFile();
+            System.out.println("Archivo creado correctamente");
+
+        } else {
+            System.out.println("El archivo ya existe");
+            verificarInformación();
+        }
+    }
+
+    private void verificarInformación() throws FileNotFoundException, IOException {
+
+        String Línea = null;
+        int númeroRegistros = 0;
+
+        BufferedReader leer = new BufferedReader(new FileReader(Archivo));
+
+        while ((Línea = leer.readLine()) != null) {
+            númeroRegistros += 1;
+        }
+
+        leer.close();
+        if (númeroRegistros == 0) {
+            JOptionPane.showMessageDialog(rootPane, "El archivo se encuentra vacío");
+
+        } else {
+            String[][] Datos = new String[númeroRegistros][5];
+            int posición = 0;
+            String Línea_Leída = null;
+
+            BufferedReader leerarchivo = new BufferedReader(new FileReader(Archivo));
+
+            while ((Línea_Leída = leerarchivo.readLine()) != null) {
+
+                StringTokenizer St = new StringTokenizer(Línea_Leída, "\t");
+
+                Datos[posición][0] = St.nextToken().trim();
+                Datos[posición][1] = St.nextToken().trim();
+                Datos[posición][2] = St.nextToken().trim();
+                Datos[posición][3] = St.nextToken().trim();
+                Datos[posición][4] = St.nextToken().trim();
+
+                posición += 1;
+
+            }
+
+            leerarchivo.close();
+            DefaultTableModel modelo = (DefaultTableModel) Tabla_de_Reportes.getModel();
+            limpiarTabla(modelo);
+
+            for (int i = 0; i < Datos.length; i++) {
+
+                String[] data = new String[5];
+
+                for (int j = 0; j < Datos[i].length; j++) {
+                    data[(j)] = Datos[i][j];
+
+                }
+                modelo.addRow(data);
+
+            }
+
+        }
+
     }
 
     /**
@@ -45,6 +128,7 @@ public class Reportes extends javax.swing.JFrame {
 
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         Panel_Reportes = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -70,11 +154,16 @@ public class Reportes extends javax.swing.JFrame {
         Panel_Exit_Reportes = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         ComboBox_Perfil_Usuario = new javax.swing.JComboBox<>();
-        jLabel14 = new javax.swing.JLabel();
+        TxtBuscarDatos = new javax.swing.JTextField();
+        BotónFiltrar = new javax.swing.JButton();
+        BotónActualizar = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Fondodegradado_1.png"))); // NOI18N
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Fondodegradado_1.png"))); // NOI18N
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Fondodegradado_1.png"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -117,7 +206,7 @@ public class Reportes extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        Panel_Reportes.add(Panel_Reporte_Usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 690, 183, -1));
+        Panel_Reportes.add(Panel_Reporte_Usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 710, 183, -1));
         Panel_Reportes.add(Txt_Nombre_Documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 254, 27));
 
         Panel_Reporte_Perfiles.setBackground(new java.awt.Color(91, 155, 213));
@@ -149,7 +238,7 @@ public class Reportes extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        Panel_Reportes.add(Panel_Reporte_Perfiles, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 690, -1, -1));
+        Panel_Reportes.add(Panel_Reporte_Perfiles, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 710, -1, -1));
 
         PanelCargarDatos.setBackground(new java.awt.Color(91, 155, 213));
         PanelCargarDatos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -180,7 +269,7 @@ public class Reportes extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        Panel_Reportes.add(PanelCargarDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, -1, -1));
+        Panel_Reportes.add(PanelCargarDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, -1, -1));
 
         Tabla_de_Reportes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -200,7 +289,7 @@ public class Reportes extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Tabla_de_Reportes);
 
-        Panel_Reportes.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 403, 690, 250));
+        Panel_Reportes.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 690, 250));
         Panel_Reportes.add(TxtNombreReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 120, 28));
         Panel_Reportes.add(TxtApellidoReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 120, 28));
         Panel_Reportes.add(TxtCorreoReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 150, 28));
@@ -234,7 +323,7 @@ public class Reportes extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        Panel_Reportes.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 720, -1, -1));
+        Panel_Reportes.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 740, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
@@ -279,22 +368,39 @@ public class Reportes extends javax.swing.JFrame {
         ComboBox_Perfil_Usuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "1- Administrador", "2- Usuario estándar" }));
         ComboBox_Perfil_Usuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Panel_Reportes.add(ComboBox_Perfil_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 180, 160, 30));
+        Panel_Reportes.add(TxtBuscarDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 190, 30));
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Fondodegradado_1.png"))); // NOI18N
-        Panel_Reportes.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 770));
+        BotónFiltrar.setText("Filtrar");
+        BotónFiltrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BotónFiltrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotónFiltrarActionPerformed(evt);
+            }
+        });
+        Panel_Reportes.add(BotónFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 380, -1, -1));
+
+        BotónActualizar.setText("Actualizar registros");
+        BotónActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BotónActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotónActualizarActionPerformed(evt);
+            }
+        });
+        Panel_Reportes.add(BotónActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, -1, -1));
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Fondodegradado_1.png"))); // NOI18N
+        Panel_Reportes.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 780));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(Panel_Reportes, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(Panel_Reportes, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(Panel_Reportes, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Panel_Reportes, javax.swing.GroupLayout.PREFERRED_SIZE, 775, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -302,47 +408,69 @@ public class Reportes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void PanelCargarDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelCargarDatosMouseClicked
-                         
+
+        try {
             Usuarios U = new Usuarios();
-            
+
             U.setNombre(TxtNombreReporte.getText());
             U.setApellido(TxtApellidoReporte.getText());
             U.setCorreo(TxtCorreoReporte.getText());
             U.setUsuario(TxtUsuarioReporte.getText());
             U.setRol(ComboBox_Perfil_Usuario.getSelectedItem().toString());
- 
+
             ArrayUsuarios.add(U);
-            
+
             Tabla.addRow(new Object[]{
                 U.getNombre(),
                 U.getApellido(),
                 U.getCorreo(),
-                U.getUsuario(), 
-                U.getRol(),
-                
-            });
+                U.getUsuario(),
+                U.getRol(),});
+
+            Ingresar();
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Reportes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Reportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_PanelCargarDatosMouseClicked
 
+    private void Ingresar() throws FileNotFoundException, UnsupportedEncodingException, IOException {
+
+        BufferedWriter escribirArchivo = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(Archivo, true), "utf-8"));
+        escribirArchivo.write(TxtNombreReporte.getText() + "\t" + TxtApellidoReporte.getText() + "\t" + TxtCorreoReporte.getText() + "\t" + TxtUsuarioReporte.getText() + "\t" + ComboBox_Perfil_Usuario.getSelectedItem().toString() + "\n");
+        JOptionPane.showMessageDialog(rootPane, "Datos ingresados");
+        escribirArchivo.close();
+        verificarInformación();
+    }
+
+    public void limpiarTabla(DefaultTableModel modelo){
+        
+        for (int i = Tabla_de_Reportes.getRowCount() -1; i >=0 ; i--) {
+            modelo.removeRow(i);           
+        }       
+    }
+    
     private void Panel_Reporte_UsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Panel_Reporte_UsuariosMouseClicked
-               
+
         Diseño_De_Reportes Reporte_FastChat = new Diseño_De_Reportes(Txt_Nombre_Documento.getText(), new Date().toString(), "C:\\Users\\Miche\\Documents\\NetBeansProjects\\FastChat\\Sistema de Mensajería - FastChat\\Sistema de Mensajería - Prueba (1)\\Cambios\\Sistema de Mensajería - Prueba\\src\\Imágenes\\Logo.png");
         Reporte_FastChat.GenerarReporte1();
-              
+
     }//GEN-LAST:event_Panel_Reporte_UsuariosMouseClicked
 
     private void Panel_Reporte_PerfilesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Panel_Reporte_PerfilesMouseClicked
-      
+
         Diseño_De_Reportes Reporte_Usuarios = new Diseño_De_Reportes(Txt_Nombre_Documento.getText(), new Date().toString(), "C:\\Users\\Miche\\Desktop\\Universidad\\2021\\Programación 1\\Proyecto\\Primer avance del proyecto\\Grupo.png", ArrayUsuarios);
         Reporte_Usuarios.GenerarReporte2();
-        
+
     }//GEN-LAST:event_Panel_Reporte_PerfilesMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
         Contactos C = new Contactos();
         C.setVisible(true);
         this.dispose();
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel13MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MousePressed
@@ -354,7 +482,7 @@ public class Reportes extends javax.swing.JFrame {
     private void jLabel13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseEntered
 
         Panel_Exit_Reportes.setBackground(Color.red);
-        
+
     }//GEN-LAST:event_jLabel13MouseEntered
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
@@ -368,6 +496,42 @@ public class Reportes extends javax.swing.JFrame {
         int y = evt.getYOnScreen();
         this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_jLabel13MouseDragged
+
+    private void BotónFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotónFiltrarActionPerformed
+        
+        String Buscar = String.valueOf(TxtBuscarDatos.getText());
+        
+        String [][] Datos = new String[Tabla_de_Reportes.getRowCount()][5];
+        
+        for (int i = 0; i < Tabla_de_Reportes.getRowCount(); i++) {
+            
+            for (int j = 0; j < 5; j++) {
+                Datos[i][j] = String.valueOf(Tabla_de_Reportes.getValueAt(i,j));               
+            }          
+        }
+        
+        DefaultTableModel modelo = (DefaultTableModel) Tabla_de_Reportes.getModel();
+        limpiarTabla(modelo);
+        for (int i = 0; i < Datos.length; i++) {
+            
+            if (Datos[i][0].equalsIgnoreCase(Buscar)) {
+                modelo.addRow(new Object[]{Datos[i][0],Datos[i][1],Datos[i][2],Datos[i][3],Datos[i][4]});
+                
+            }
+                
+            }
+        
+    }//GEN-LAST:event_BotónFiltrarActionPerformed
+
+    private void BotónActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotónActualizarActionPerformed
+        
+        try {
+            verificarInformación();
+        } catch (IOException ex) {
+            Logger.getLogger(Reportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_BotónActualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -386,25 +550,36 @@ public class Reportes extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Reportes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reportes.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Reportes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reportes.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Reportes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reportes.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Reportes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reportes.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Reportes().setVisible(true);
+                try {
+                    new Reportes().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Reportes.class
+                            .getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotónActualizar;
+    private javax.swing.JButton BotónFiltrar;
     private javax.swing.JComboBox<String> ComboBox_Perfil_Usuario;
     private javax.swing.JPanel PanelCargarDatos;
     private javax.swing.JPanel Panel_Exit_Reportes;
@@ -413,6 +588,7 @@ public class Reportes extends javax.swing.JFrame {
     private javax.swing.JPanel Panel_Reportes;
     private javax.swing.JTable Tabla_de_Reportes;
     private javax.swing.JTextField TxtApellidoReporte;
+    private javax.swing.JTextField TxtBuscarDatos;
     private javax.swing.JTextField TxtCorreoReporte;
     private javax.swing.JTextField TxtNombreReporte;
     private javax.swing.JTextField TxtUsuarioReporte;
@@ -424,6 +600,7 @@ public class Reportes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

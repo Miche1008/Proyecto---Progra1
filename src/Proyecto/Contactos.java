@@ -6,6 +6,9 @@
 package Proyecto;
 
 import java.awt.Color;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -30,7 +33,7 @@ public class Contactos extends javax.swing.JFrame {
 
         initComponents();
         
-        TxtContacto.setText(usuario);
+        TxtContacto1.setText(usuario);
         
         if (Login.rol == "1") {
             PanelAdministardor.setVisible(true);
@@ -60,6 +63,7 @@ public class Contactos extends javax.swing.JFrame {
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
         jLabel4 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         PanelContactos = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         LabelReporte = new javax.swing.JLabel();
@@ -72,10 +76,10 @@ public class Contactos extends javax.swing.JFrame {
         LabelCrearGrupo = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        TxtContacto = new javax.swing.JTextField();
+        TxtContacto1 = new javax.swing.JTextField();
         Panel_Contactos = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        TxtContacto2 = new javax.swing.JTextField();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
@@ -84,6 +88,8 @@ public class Contactos extends javax.swing.JFrame {
         jCheckBoxMenuItem2.setText("jCheckBoxMenuItem2");
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Fondodegradado.png"))); // NOI18N
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Fondodegradado_1.png"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Contactos");
@@ -191,14 +197,19 @@ public class Contactos extends javax.swing.JFrame {
         jLabel6.setText("Lista de contactos");
         PanelContactos.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 25, -1, -1));
 
-        TxtContacto.setEditable(false);
-        TxtContacto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        TxtContacto.addMouseListener(new java.awt.event.MouseAdapter() {
+        TxtContacto1.setEditable(false);
+        TxtContacto1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        TxtContacto1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TxtContactoMouseClicked(evt);
+                TxtContacto1MouseClicked(evt);
             }
         });
-        PanelContactos.add(TxtContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 162, 102, 28));
+        TxtContacto1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtContacto1ActionPerformed(evt);
+            }
+        });
+        PanelContactos.add(TxtContacto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 162, 100, 28));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -238,8 +249,9 @@ public class Contactos extends javax.swing.JFrame {
 
         PanelContactos.add(Panel_Contactos, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 30, 30));
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Fondodegradado_1.png"))); // NOI18N
-        PanelContactos.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 640));
+        TxtContacto2.setEditable(false);
+        TxtContacto2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        PanelContactos.add(TxtContacto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 100, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -259,18 +271,22 @@ public class Contactos extends javax.swing.JFrame {
 
     private void Panel_Ir_A_ReportesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Panel_Ir_A_ReportesMouseClicked
 
-        Reportes R = new Reportes();
-        R.setVisible(true);
+        Reportes R;
+        try {
+            R = new Reportes();
+            R.setVisible(true);
         this.dispose();
-
+        } catch (IOException ex) {
+            Logger.getLogger(Contactos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_Panel_Ir_A_ReportesMouseClicked
 
-    private void TxtContactoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtContactoMouseClicked
+    private void TxtContacto1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtContacto1MouseClicked
         
-        new FastChat(TxtContacto.getText()).setVisible(true);  
+        new FastChat(TxtContacto1.getText()).setVisible(true);  
         this.dispose();
         
-    }//GEN-LAST:event_TxtContactoMouseClicked
+    }//GEN-LAST:event_TxtContacto1MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         
@@ -298,6 +314,10 @@ public class Contactos extends javax.swing.JFrame {
         this.setLocation(x - xMouse, y - yMouse);
         
     }//GEN-LAST:event_jLabel7MouseDragged
+
+    private void TxtContacto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtContacto1ActionPerformed
+       
+    }//GEN-LAST:event_TxtContacto1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -342,7 +362,8 @@ public class Contactos extends javax.swing.JFrame {
     private javax.swing.JPanel PanelCrearGrupo;
     private javax.swing.JPanel Panel_Contactos;
     private javax.swing.JPanel Panel_Ir_A_Reportes;
-    private javax.swing.JTextField TxtContacto;
+    private javax.swing.JTextField TxtContacto1;
+    private javax.swing.JTextField TxtContacto2;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
     private javax.swing.JLabel jLabel1;
