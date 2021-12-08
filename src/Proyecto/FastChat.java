@@ -4,6 +4,8 @@ package Proyecto;
 import java.awt.Color;
 import java.net.*;
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -38,49 +40,28 @@ public class FastChat extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BotónEnviarFastChat = new javax.swing.JButton();
-        BotónAtrásFastChat = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Text_Area_Envío_Mensajes = new javax.swing.JTextPane();
         jScrollPane2 = new javax.swing.JScrollPane();
         Text_Area_Mensaje = new javax.swing.JTextArea();
         PanelExitFastChat = new javax.swing.JPanel();
         LabelExitFastChat = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        Panel_FastChat = new javax.swing.JPanel();
         BotónUsuarioFastChat = new javax.swing.JButton();
+        BotónAtrásFastChat = new javax.swing.JButton();
+        BotónEnviarFastChat = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Text_Area_Envío_Mensajes = new javax.swing.JTextPane();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FastChat");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BotónEnviarFastChat.setText("Enviar");
-        BotónEnviarFastChat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BotónEnviarFastChat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotónEnviarFastChatActionPerformed(evt);
-            }
-        });
-        getContentPane().add(BotónEnviarFastChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 450, 84, -1));
-
-        BotónAtrásFastChat.setText("Atrás");
-        BotónAtrásFastChat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BotónAtrásFastChat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotónAtrásFastChatActionPerformed(evt);
-            }
-        });
-        getContentPane().add(BotónAtrásFastChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 450, 77, -1));
-
-        jScrollPane1.setViewportView(Text_Area_Envío_Mensajes);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 670, 130));
-
+        Text_Area_Mensaje.setEditable(false);
         Text_Area_Mensaje.setColumns(20);
         Text_Area_Mensaje.setRows(5);
-        Text_Area_Mensaje.setText("En este espacio se visualizaría el historial de la conversación");
         jScrollPane2.setViewportView(Text_Area_Mensaje);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 670, 200));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 670, 250));
 
         PanelExitFastChat.setForeground(new java.awt.Color(255, 255, 255));
 
@@ -126,30 +107,41 @@ public class FastChat extends javax.swing.JFrame {
 
         getContentPane().add(PanelExitFastChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 0, 40, 40));
 
+        Panel_FastChat.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         BotónUsuarioFastChat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotónUsuarioFastChatActionPerformed(evt);
             }
         });
+        Panel_FastChat.add(BotónUsuarioFastChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 90, 35));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BotónUsuarioFastChat, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(660, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BotónUsuarioFastChat, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(514, Short.MAX_VALUE))
-        );
+        BotónAtrásFastChat.setText("Atrás");
+        BotónAtrásFastChat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BotónAtrásFastChat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotónAtrásFastChatActionPerformed(evt);
+            }
+        });
+        Panel_FastChat.add(BotónAtrásFastChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 500, 77, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 560));
+        BotónEnviarFastChat.setText("Enviar");
+        BotónEnviarFastChat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BotónEnviarFastChat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotónEnviarFastChatActionPerformed(evt);
+            }
+        });
+        Panel_FastChat.add(BotónEnviarFastChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 500, 84, -1));
+
+        jScrollPane1.setViewportView(Text_Area_Envío_Mensajes);
+
+        Panel_FastChat.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 670, 130));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Fondodegradado_1.png"))); // NOI18N
+        Panel_FastChat.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 560));
+
+        getContentPane().add(Panel_FastChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -157,12 +149,14 @@ public class FastChat extends javax.swing.JFrame {
     private void BotónEnviarFastChatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotónEnviarFastChatActionPerformed
         
         try {
+                     
+            Date Fecha = new Date(); 
+            SimpleDateFormat FormatoFechaSimple = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
             
-            String mensajenuevo = Text_Area_Envío_Mensajes.getText().trim();
-            salida.writeUTF(mensajenuevo);
-            
-            Text_Area_Envío_Mensajes.setText("");
-            
+            String mensaje = this.Text_Area_Envío_Mensajes.getText() + "\n" + "Fecha: " + FormatoFechaSimple.format(Fecha) + "\n";
+            salida.writeUTF(mensaje);
+            this.Text_Area_Mensaje.append(mensaje);
+                        
         } catch (Exception e) {
             Logger.getLogger(FastChat.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -239,7 +233,7 @@ public class FastChat extends javax.swing.JFrame {
         });
         
         try {
-            
+
             S = new Socket ("192.168.0.103", 4444);
             entrada = new DataInputStream(S.getInputStream());
             salida = new DataOutputStream(S.getOutputStream());
@@ -247,9 +241,9 @@ public class FastChat extends javax.swing.JFrame {
             String mensaje = "";
             
             while (!mensaje.equals("Exit")) {
-                mensaje = entrada.readUTF();
-                         
-                Text_Area_Mensaje.setText(Text_Area_Mensaje.getText().trim()+"\n Servidor: "+mensaje);
+                
+                mensaje = entrada.readUTF();                        
+                Text_Area_Mensaje.setText(Text_Area_Mensaje.getText().trim() + "\n" + "\nLuilli: " + mensaje + "\n");               
             }          
             
         } catch (Exception e) {
@@ -263,9 +257,10 @@ public class FastChat extends javax.swing.JFrame {
     private javax.swing.JButton BotónUsuarioFastChat;
     private javax.swing.JLabel LabelExitFastChat;
     private javax.swing.JPanel PanelExitFastChat;
-    private javax.swing.JTextPane Text_Area_Envío_Mensajes;
+    private javax.swing.JPanel Panel_FastChat;
+    static javax.swing.JTextPane Text_Area_Envío_Mensajes;
     static javax.swing.JTextArea Text_Area_Mensaje;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
