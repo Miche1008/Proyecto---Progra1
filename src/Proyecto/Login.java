@@ -414,7 +414,7 @@ public class Login extends javax.swing.JFrame {
             Icono icon = new Icono();
             JOptionPane.showMessageDialog(rootPane, "Usuario creado correctamente", "FastChat - Creación de usuario", JOptionPane.DEFAULT_OPTION, icon);
 
-            EnvioCorreos C = new EnvioCorreos(TxtCorreo.getText(), TxtUsuarioLogin.getText(), TxtContraseñaLogin.getText(), ArrayUsuarios);
+            EnvioCorreos C = new EnvioCorreos(TxtCorreo.getText(), TxtUsuarioLogin.getText(), TxtContraseñaLogin.getText());
             C.Envio_de_Correos();
 
         } catch (Exception e) {

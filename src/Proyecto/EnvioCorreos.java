@@ -18,27 +18,26 @@ import javax.net.ssl.SSLSession;
 import javax.swing.JOptionPane;
 
 public class EnvioCorreos {
+    
+    Login L = new Login();
 
     static final String FROM = "mensajeria.fastchat@gmail.com";
     static final String FROMNAME = "FastChat";
     
     private String TO;
-    private String usuario;
+    public String usuario;
     private String contraseña;
-    ArrayList<Usuarios> ArrayUsuarios;
 
-    public EnvioCorreos(String TO, String usuario, String contraseña, ArrayList<Usuarios> ArrayUsuarios) {
+    public EnvioCorreos(String TO, String usuario, String contraseña) {
         this.TO = TO;
         this.usuario = usuario;
         this.contraseña = contraseña;
-        this.ArrayUsuarios = ArrayUsuarios;
- 
     }
 
     public EnvioCorreos(String TO) {
         this.TO = TO;
     }
-    
+ 
     static final String SMTP_USERMANE = "mensajeria.fastchat@gmail.com";
     static final String SMTP_PASSWORD = "FastChat1011";
 
@@ -52,9 +51,9 @@ public class EnvioCorreos {
     
     static final String SUBJECT2 = "Recuperación de contraseña";
     
-    static final String BODY = ("Hola, bienvenido a FastChat, su usuario y contraseña respectivamente son: " + Login.ArrayUsuarios); 
+    String BODY = ("Hola, bienvenido a FastChat, su usuario es: " +usuario+ " y su contraseña es: "+contraseña); 
     
-    static final String BODY2 = ("Hola, la contraseña asignada a su usuario es: ");
+    String BODY2 = ("Hola, la contraseña asignada a su usuario es: " +contraseña);
 
     public void Envio_de_Correos() throws UnsupportedEncodingException, MessagingException {      
 
