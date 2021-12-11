@@ -18,18 +18,21 @@ import javax.net.ssl.SSLSession;
 import javax.swing.JOptionPane;
 
 public class EnvioCorreos {
-    
+
     Login L = new Login();
 
     static final String FROM = "mensajeria.fastchat@gmail.com";
     static final String FROMNAME = "FastChat";
-    
+
     private String TO;
+    private String nombre;
     public String usuario;
     private String contraseña;
+    
 
-    public EnvioCorreos(String TO, String usuario, String contraseña) {
+    public EnvioCorreos(String TO, String nombre, String usuario, String contraseña) {
         this.TO = TO;
+        this.nombre = nombre;
         this.usuario = usuario;
         this.contraseña = contraseña;
     }
@@ -37,7 +40,7 @@ public class EnvioCorreos {
     public EnvioCorreos(String TO) {
         this.TO = TO;
     }
- 
+
     static final String SMTP_USERMANE = "mensajeria.fastchat@gmail.com";
     static final String SMTP_PASSWORD = "FastChat1011";
 
@@ -48,14 +51,16 @@ public class EnvioCorreos {
     static final int PORT = 587;
 
     static final String SUBJECT = "Bienvenida";
-    
-    static final String SUBJECT2 = "Recuperación de contraseña";
-    
-    String BODY = ("Hola, bienvenido a FastChat, su usuario es: " +usuario+ " y su contraseña es: "+contraseña); 
-    
-    String BODY2 = ("Hola, la contraseña asignada a su usuario es: " +contraseña);
 
-    public void Envio_de_Correos() throws UnsupportedEncodingException, MessagingException {      
+    static final String SUBJECT2 = "Recuperación de contraseña";
+
+    // String BODY = ("Hola " + nombre + ", bienvenido a FastChat, su usuario es: " + usuario + " y su contraseña es: " + contraseña);
+    // String BODY2 = ("Hola, la contraseña asignada a su usuario es: ");
+    String BODY = (", Bienvenido a FastChat, ");
+
+    String BODY2 = (", su contraseña es: ");
+
+    public void Envio_de_Correos() throws UnsupportedEncodingException, MessagingException {
 
         Properties props = System.getProperties();
         props.put("mail.transport.protocol", "smtp");
@@ -68,11 +73,11 @@ public class EnvioCorreos {
 
         BodyPart texto = new MimeBodyPart();
         texto.setContent(BODY, "text/html");
-        
+
         BodyPart imagen = new MimeBodyPart();
         imagen.setDataHandler(new DataHandler(new FileDataSource("C:\\Users\\Miche\\Desktop\\Universidad\\2021\\Programación 1\\Proyecto\\Primer avance del proyecto\\Firma correo\\Firma3.png")));
         imagen.setFileName("Bienvenida");
-        
+
         MimeMultipart partes = new MimeMultipart();
         partes.addBodyPart(texto);
         partes.addBodyPart(imagen);
@@ -81,19 +86,20 @@ public class EnvioCorreos {
         mg.setFrom(new InternetAddress(FROM, FROMNAME));
         mg.setRecipient(Message.RecipientType.TO, new InternetAddress(TO));
         mg.setSubject(SUBJECT);
-        mg.setContent(BODY, "text/html");
-        mg.setContent(partes);
+        // mg.setContent("Hola " + nombre + BODY + " su usuario es: " + usuario + " y su contraseña es: " + contraseña, "text/html");
+        mg.setContent("Hola " + nombre + BODY + " su usuario es: " + usuario + " y su contraseña es: " + contraseña, "text/html");
+        // mg.setContent(partes);
 
-        mg.setHeader("X-SES-CONFIGURARTION-SET", CONFIGSET);        
+        mg.setHeader("X-SES-CONFIGURARTION-SET", CONFIGSET);
 
         Transport transport = session.getTransport();
         System.out.println(TO);
-        
+
         JOptionPane.showMessageDialog(null, "Por favor espere, estamos validando su correo electrónico.");
 
         try {
-            transport.connect(HOST, SMTP_USERMANE, SMTP_PASSWORD);           
-            transport.sendMessage(mg, mg.getAllRecipients());           
+            transport.connect(HOST, SMTP_USERMANE, SMTP_PASSWORD);
+            transport.sendMessage(mg, mg.getAllRecipients());
             JOptionPane.showMessageDialog(null, "Correo de validación enviado");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error");
@@ -101,11 +107,13 @@ public class EnvioCorreos {
         } finally {
             transport.close();
         }
+
+    }
+
+    public void Envio_de_Correos_Recuperar_Contraseña() throws MessagingException, UnsupportedEncodingException {
+
         
-        }
         
-        public void Envio_de_Correos_Recuperar_Contraseña() throws MessagingException, UnsupportedEncodingException{
-            
         Properties props = System.getProperties();
         props.put("mail.transport.protocol", "smtp");
         props.put("mail.smtp.port", PORT);
@@ -117,11 +125,11 @@ public class EnvioCorreos {
 
         BodyPart texto = new MimeBodyPart();
         texto.setContent(BODY, "text/html");
-        
+
         BodyPart imagen = new MimeBodyPart();
         imagen.setDataHandler(new DataHandler(new FileDataSource("C:\\Users\\Miche\\Desktop\\Universidad\\2021\\Programación 1\\Proyecto\\Primer avance del proyecto\\Firma correo\\Firma3.png")));
         imagen.setFileName("Bienvenida");
-        
+
         MimeMultipart partes = new MimeMultipart();
         partes.addBodyPart(texto);
         partes.addBodyPart(imagen);
@@ -130,18 +138,19 @@ public class EnvioCorreos {
         mg.setFrom(new InternetAddress(FROM, FROMNAME));
         mg.setRecipient(Message.RecipientType.TO, new InternetAddress(TO));
         mg.setSubject(SUBJECT2);
-        mg.setContent(BODY2, "text/html");
-        
-        mg.setHeader("X-SES-CONFIGURARTION-SET", CONFIGSET);        
+        // mg.setContent(BODY2 + contraseña, "text/html");
+        mg.setContent("Hola " + nombre + BODY2  + contraseña, "text/html");
+
+        mg.setHeader("X-SES-CONFIGURARTION-SET", CONFIGSET);
 
         Transport transport = session.getTransport();
         System.out.println(TO);
-        
+
         JOptionPane.showMessageDialog(null, "Por favor espere, estamos validando su correo electrónico.");
 
         try {
-            transport.connect(HOST, SMTP_USERMANE, SMTP_PASSWORD);           
-            transport.sendMessage(mg, mg.getAllRecipients());           
+            transport.connect(HOST, SMTP_USERMANE, SMTP_PASSWORD);
+            transport.sendMessage(mg, mg.getAllRecipients());
             JOptionPane.showMessageDialog(null, "Correo de validación enviado");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error");
@@ -149,9 +158,7 @@ public class EnvioCorreos {
         } finally {
             transport.close();
         }
-            
-        }
 
     }
 
-
+}
