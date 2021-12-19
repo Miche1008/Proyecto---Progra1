@@ -82,7 +82,7 @@ public class Diseño_De_Reportes {
             documento.add(Chunk.NEWLINE);
 
             documento.add(new Paragraph("Si quiere conocer sobre el nombre y el logo, escanea el siguiente código QR"));
-            BarcodeQRCode códigoqr = new BarcodeQRCode("El nombre del software proviene de la derivación de dos palabras; la primera es fast: palabra escrita en inglés que traducida al español obtenemos el significado de rápido o veloz, complementado por la palabra chat, que básicamente significa intercambiar mensajes a través de internet y que a su vez permite realizar una conversación entre dos o más personas. El nombre de FastChat nos indica tener un software de mensajería instantánea en la cual podemos chatear de una manera rápida.", 1, 1, null);
+            BarcodeQRCode códigoqr = new BarcodeQRCode("FastChat - Versión 1.0, 2021. \n\n" + "El nombre del software proviene de la derivación de dos palabras; la primera es fast: palabra escrita en inglés que traducida al español obtenemos el significado de rápido o veloz, complementado por la palabra chat, que básicamente significa intercambiar mensajes a través de internet y que a su vez permite realizar una conversación entre dos o más personas. El nombre de FastChat nos indica tener un software de mensajería instantánea en la cual podemos chatear de una manera rápida.", 1, 1, null);
             Image imagenqr = códigoqr.getImage();
             imagenqr.scalePercent(200);
             documento.add(imagenqr);

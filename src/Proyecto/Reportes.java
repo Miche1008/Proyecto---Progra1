@@ -138,7 +138,7 @@ public class Reportes extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Generar reporte FastChat");
+        jLabel3.setText("Generar reporte - Acerca de FastChat");
 
         javax.swing.GroupLayout Panel_Reporte_FastChatLayout = new javax.swing.GroupLayout(Panel_Reporte_FastChat);
         Panel_Reporte_FastChat.setLayout(Panel_Reporte_FastChatLayout);
@@ -157,7 +157,7 @@ public class Reportes extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        Panel_Reportes.add(Panel_Reporte_FastChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 470, 183, -1));
+        Panel_Reportes.add(Panel_Reporte_FastChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 470, 270, -1));
         Panel_Reportes.add(Txt_Nombre_Documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 254, 27));
 
         Panel_Reporte_Usuarios.setBackground(new java.awt.Color(91, 155, 213));

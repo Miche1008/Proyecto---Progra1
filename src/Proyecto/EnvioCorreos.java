@@ -26,8 +26,9 @@ public class EnvioCorreos {
 
     private String TO;
     private String nombre;
-    public String usuario;
+    private String usuario;
     private String contraseña;
+    ArrayList<Usuarios> ArrayUsuarios;
     
 
     public EnvioCorreos(String TO, String nombre, String usuario, String contraseña) {
@@ -37,14 +38,15 @@ public class EnvioCorreos {
         this.contraseña = contraseña;
     }
 
-    public EnvioCorreos(String TO, String nombre, String contraseña) {
+    public EnvioCorreos(String TO, String nombre, String contraseña, ArrayList<Usuarios> ArrayUsuarios) {
         this.TO = TO;
         this.nombre = nombre;
         this.contraseña = contraseña;
-    }   
+        this.ArrayUsuarios = ArrayUsuarios;
+    }
 
     static final String SMTP_USERMANE = "mensajeria.fastchat@gmail.com";
-    static final String SMTP_PASSWORD = "FastChat1011";
+    static final String SMTP_PASSWORD = "FastChat321456";
 
     static final String CONFIGSET = "ConfigSet";
 

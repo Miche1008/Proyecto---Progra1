@@ -41,6 +41,8 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         TxtUsuarioLogin = new javax.swing.JTextField();
@@ -63,18 +65,22 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         PanelIniciarSesión = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Fondodegradado.png"))); // NOI18N
+        jLabel5.setText("jLabel5");
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Fondodegradado_1.png"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel1.setText("Registre su nuevo usuario");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 190, -1));
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 240, -1));
 
         TxtUsuarioLogin.setBackground(new java.awt.Color(197, 219, 240));
         TxtUsuarioLogin.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
@@ -87,7 +93,7 @@ public class Login extends javax.swing.JFrame {
                 TxtUsuarioLoginMousePressed(evt);
             }
         });
-        jPanel3.add(TxtUsuarioLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 220, -1));
+        jPanel3.add(TxtUsuarioLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 220, -1));
 
         TxtContraseñaLogin.setBackground(new java.awt.Color(214, 229, 244));
         TxtContraseñaLogin.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
@@ -100,7 +106,7 @@ public class Login extends javax.swing.JFrame {
                 TxtContraseñaLoginMousePressed(evt);
             }
         });
-        jPanel3.add(TxtContraseñaLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, 220, -1));
+        jPanel3.add(TxtContraseñaLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 220, -1));
 
         VerContraseña2.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         VerContraseña2.setText("Visualizar contraseña");
@@ -110,7 +116,7 @@ public class Login extends javax.swing.JFrame {
                 VerContraseña2ActionPerformed(evt);
             }
         });
-        jPanel3.add(VerContraseña2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 360, 150, -1));
+        jPanel3.add(VerContraseña2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, 150, -1));
 
         PanelExitRegistro.setBackground(new java.awt.Color(124, 174, 220));
         PanelExitRegistro.setForeground(new java.awt.Color(255, 255, 255));
@@ -165,7 +171,7 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(LabelExitIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel3.add(PanelExitRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, 40, 40));
+        jPanel3.add(PanelExitRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 0, 40, 40));
 
         TxtNombre.setBackground(new java.awt.Color(136, 182, 224));
         TxtNombre.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
@@ -183,7 +189,7 @@ public class Login extends javax.swing.JFrame {
                 TxtNombreActionPerformed(evt);
             }
         });
-        jPanel3.add(TxtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 220, -1));
+        jPanel3.add(TxtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 220, -1));
 
         TxtCorreo.setBackground(new java.awt.Color(177, 207, 235));
         TxtCorreo.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
@@ -196,7 +202,7 @@ public class Login extends javax.swing.JFrame {
                 TxtCorreoMousePressed(evt);
             }
         });
-        jPanel3.add(TxtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 220, -1));
+        jPanel3.add(TxtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 220, -1));
 
         TxtApellidos.setBackground(new java.awt.Color(155, 194, 229));
         TxtApellidos.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
@@ -214,16 +220,16 @@ public class Login extends javax.swing.JFrame {
                 TxtApellidosActionPerformed(evt);
             }
         });
-        jPanel3.add(TxtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 220, -1));
-        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 102, 220, 40));
-        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 162, 220, 10));
-        jPanel3.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 232, 220, 10));
-        jPanel3.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 302, 220, -1));
-        jPanel3.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 372, 220, 10));
+        jPanel3.add(TxtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 220, -1));
+        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 220, 40));
+        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 220, 10));
+        jPanel3.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 220, 10));
+        jPanel3.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 302, 220, -1));
+        jPanel3.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 220, 10));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel2.setText("Seleccione su perfil de usuario:");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, -1, -1));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, -1));
 
         buttonGroup1.add(radioadministrador);
         radioadministrador.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
@@ -233,12 +239,12 @@ public class Login extends javax.swing.JFrame {
                 radioadministradorActionPerformed(evt);
             }
         });
-        jPanel3.add(radioadministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 420, -1, -1));
+        jPanel3.add(radioadministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 410, -1, -1));
 
         buttonGroup1.add(radiousuario);
         radiousuario.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         radiousuario.setText("Usuario estándar");
-        jPanel3.add(radiousuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, -1, -1));
+        jPanel3.add(radiousuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, -1, -1));
 
         PanelCrearUsuario.setBackground(new java.awt.Color(91, 155, 213));
         PanelCrearUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -270,7 +276,7 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.add(PanelCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 480, 110, 40));
+        jPanel3.add(PanelCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 470, 110, 40));
 
         PanelIniciarSesión.setBackground(new java.awt.Color(91, 155, 213));
         PanelIniciarSesión.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -289,40 +295,37 @@ public class Login extends javax.swing.JFrame {
         PanelIniciarSesiónLayout.setHorizontalGroup(
             PanelIniciarSesiónLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelIniciarSesiónLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addContainerGap())
         );
         PanelIniciarSesiónLayout.setVerticalGroup(
             PanelIniciarSesiónLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelIniciarSesiónLayout.createSequentialGroup()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        jPanel3.add(PanelIniciarSesión, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 530, 110, 40));
+        jPanel3.add(PanelIniciarSesión, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 520, 110, 40));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Fondodegradado.png"))); // NOI18N
-        jLabel5.setText("jLabel5");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 590));
+        jLabel8.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jLabel8.setText("No se permiten caracteres especiales");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, -1));
 
-        jLabel6.setText("jLabel6");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, -1, -1));
-
-        jLabel7.setText("X");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 20, -1));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Fondodegradado_1.png"))); // NOI18N
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 580));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -408,21 +411,9 @@ public class Login extends javax.swing.JFrame {
                 rol = "Usuario estándar";
             }
 
-            //String Nombre = TxtNombre.getText();
-            //String Apellidos = TxtApellidos.getText();
-            //String Correo = TxtCorreo.getText();
-            //String Usuario = TxtUsuarioLogin.getText();
-            //String Contraseña = TxtContraseñaLogin.getText();
-            
             Usuarios U = new Usuarios(TxtUsuarioLogin.getText(), TxtContraseñaLogin.getText(), TxtNombre.getText(), TxtApellidos.getText(), TxtCorreo.getText(), rol);
             
             ArrayUsuarios.add(U);
-            
-            //TxtNombre.setText("");
-            //TxtApellidos.setText("");
-            //TxtCorreo.setText("");
-            //TxtUsuarioLogin.setText("");
-            //TxtContraseñaLogin.setText("");
 
             Icono icon = new Icono();
             JOptionPane.showMessageDialog(rootPane, "Usuario creado correctamente", "FastChat - Creación de usuario", JOptionPane.DEFAULT_OPTION, icon);
@@ -504,7 +495,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
