@@ -156,7 +156,9 @@ public class FastChat extends javax.swing.JFrame {
             String mensaje = this.Text_Area_Envío_Mensajes.getText() + "\n" + "Fecha: " + FormatoFechaSimple.format(Fecha) + "\n";
             salida.writeUTF(mensaje);
             this.Text_Area_Mensaje.append(mensaje);
-                        
+            
+            Text_Area_Envío_Mensajes.setText("");
+                          
         } catch (Exception e) {
             Logger.getLogger(FastChat.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -234,7 +236,7 @@ public class FastChat extends javax.swing.JFrame {
         
         try {
 
-            S = new Socket ("192.168.0.103", 4444);
+            S = new Socket ("192.168.0.111", 4444);
             entrada = new DataInputStream(S.getInputStream());
             salida = new DataOutputStream(S.getOutputStream());
             

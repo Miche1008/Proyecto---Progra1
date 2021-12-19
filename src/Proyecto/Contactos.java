@@ -39,14 +39,12 @@ public class Contactos extends javax.swing.JFrame {
             PanelAdministardor.setVisible(true);
             LabelReporte.setVisible(true);
             Panel_Ir_A_Reportes.setVisible(true);
-            LabelCrearGrupo.setVisible(true);
-            PanelCrearGrupo.setVisible(true);
+            
         }else{
             PanelAdministardor.setVisible(false);
             LabelReporte.setVisible(false);
             Panel_Ir_A_Reportes.setVisible(false);
-            LabelCrearGrupo.setVisible(false);
-            PanelCrearGrupo.setVisible(false);
+            
         }
         
     }
@@ -71,9 +69,6 @@ public class Contactos extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         PanelAdministardor = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        PanelCrearGrupo = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        LabelCrearGrupo = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         TxtContacto1 = new javax.swing.JTextField();
@@ -103,7 +98,7 @@ public class Contactos extends javax.swing.JFrame {
 
         LabelReporte.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         LabelReporte.setText("Si deseas generar un reporte, presione \"Ir a reportes\".");
-        PanelContactos.add(LabelReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 544, -1, -1));
+        PanelContactos.add(LabelReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, -1, -1));
 
         Panel_Ir_A_Reportes.setBackground(new java.awt.Color(91, 155, 213));
         Panel_Ir_A_Reportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -134,7 +129,7 @@ public class Contactos extends javax.swing.JFrame {
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        PanelContactos.add(Panel_Ir_A_Reportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 579, 97, -1));
+        PanelContactos.add(Panel_Ir_A_Reportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, 97, -1));
 
         PanelAdministardor.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -159,36 +154,6 @@ public class Contactos extends javax.swing.JFrame {
         );
 
         PanelContactos.add(PanelAdministardor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 344, 392, -1));
-
-        PanelCrearGrupo.setBackground(new java.awt.Color(91, 155, 213));
-        PanelCrearGrupo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        jLabel3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Crear grupo");
-
-        javax.swing.GroupLayout PanelCrearGrupoLayout = new javax.swing.GroupLayout(PanelCrearGrupo);
-        PanelCrearGrupo.setLayout(PanelCrearGrupoLayout);
-        PanelCrearGrupoLayout.setHorizontalGroup(
-            PanelCrearGrupoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCrearGrupoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addContainerGap())
-        );
-        PanelCrearGrupoLayout.setVerticalGroup(
-            PanelCrearGrupoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCrearGrupoLayout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addContainerGap())
-        );
-
-        PanelContactos.add(PanelCrearGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(139, 477, -1, -1));
-
-        LabelCrearGrupo.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        LabelCrearGrupo.setText("Para crear un grupo, presione la opción de \"Crear grupo\".");
-        PanelContactos.add(LabelCrearGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 449, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Lista de contactos3.png"))); // NOI18N
         PanelContactos.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, 54));
@@ -261,9 +226,7 @@ public class Contactos extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(PanelContactos, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(PanelContactos, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -355,11 +318,9 @@ public class Contactos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel LabelCrearGrupo;
     private javax.swing.JLabel LabelReporte;
     private javax.swing.JPanel PanelAdministardor;
     private javax.swing.JPanel PanelContactos;
-    private javax.swing.JPanel PanelCrearGrupo;
     private javax.swing.JPanel Panel_Contactos;
     private javax.swing.JPanel Panel_Ir_A_Reportes;
     private javax.swing.JTextField TxtContacto1;
@@ -368,7 +329,6 @@ public class Contactos extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

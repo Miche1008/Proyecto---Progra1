@@ -37,9 +37,11 @@ public class EnvioCorreos {
         this.contraseña = contraseña;
     }
 
-    public EnvioCorreos(String TO) {
+    public EnvioCorreos(String TO, String nombre, String contraseña) {
         this.TO = TO;
-    }
+        this.nombre = nombre;
+        this.contraseña = contraseña;
+    }   
 
     static final String SMTP_USERMANE = "mensajeria.fastchat@gmail.com";
     static final String SMTP_PASSWORD = "FastChat1011";
@@ -54,8 +56,6 @@ public class EnvioCorreos {
 
     static final String SUBJECT2 = "Recuperación de contraseña";
 
-    // String BODY = ("Hola " + nombre + ", bienvenido a FastChat, su usuario es: " + usuario + " y su contraseña es: " + contraseña);
-    // String BODY2 = ("Hola, la contraseña asignada a su usuario es: ");
     String BODY = (", Bienvenido a FastChat, ");
 
     String BODY2 = (", su contraseña es: ");
@@ -71,24 +71,11 @@ public class EnvioCorreos {
 
         Session session = Session.getDefaultInstance(props);
 
-        BodyPart texto = new MimeBodyPart();
-        texto.setContent(BODY, "text/html");
-
-        BodyPart imagen = new MimeBodyPart();
-        imagen.setDataHandler(new DataHandler(new FileDataSource("C:\\Users\\Miche\\Desktop\\Universidad\\2021\\Programación 1\\Proyecto\\Primer avance del proyecto\\Firma correo\\Firma3.png")));
-        imagen.setFileName("Bienvenida");
-
-        MimeMultipart partes = new MimeMultipart();
-        partes.addBodyPart(texto);
-        partes.addBodyPart(imagen);
-
         MimeMessage mg = new MimeMessage(session);
         mg.setFrom(new InternetAddress(FROM, FROMNAME));
         mg.setRecipient(Message.RecipientType.TO, new InternetAddress(TO));
         mg.setSubject(SUBJECT);
-        // mg.setContent("Hola " + nombre + BODY + " su usuario es: " + usuario + " y su contraseña es: " + contraseña, "text/html");
         mg.setContent("Hola " + nombre + BODY + " su usuario es: " + usuario + " y su contraseña es: " + contraseña, "text/html");
-        // mg.setContent(partes);
 
         mg.setHeader("X-SES-CONFIGURARTION-SET", CONFIGSET);
 
@@ -112,8 +99,6 @@ public class EnvioCorreos {
 
     public void Envio_de_Correos_Recuperar_Contraseña() throws MessagingException, UnsupportedEncodingException {
 
-        
-        
         Properties props = System.getProperties();
         props.put("mail.transport.protocol", "smtp");
         props.put("mail.smtp.port", PORT);
@@ -123,22 +108,10 @@ public class EnvioCorreos {
 
         Session session = Session.getDefaultInstance(props);
 
-        BodyPart texto = new MimeBodyPart();
-        texto.setContent(BODY, "text/html");
-
-        BodyPart imagen = new MimeBodyPart();
-        imagen.setDataHandler(new DataHandler(new FileDataSource("C:\\Users\\Miche\\Desktop\\Universidad\\2021\\Programación 1\\Proyecto\\Primer avance del proyecto\\Firma correo\\Firma3.png")));
-        imagen.setFileName("Bienvenida");
-
-        MimeMultipart partes = new MimeMultipart();
-        partes.addBodyPart(texto);
-        partes.addBodyPart(imagen);
-
         MimeMessage mg = new MimeMessage(session);
         mg.setFrom(new InternetAddress(FROM, FROMNAME));
         mg.setRecipient(Message.RecipientType.TO, new InternetAddress(TO));
         mg.setSubject(SUBJECT2);
-        // mg.setContent(BODY2 + contraseña, "text/html");
         mg.setContent("Hola " + nombre + BODY2  + contraseña, "text/html");
 
         mg.setHeader("X-SES-CONFIGURARTION-SET", CONFIGSET);
@@ -151,7 +124,7 @@ public class EnvioCorreos {
         try {
             transport.connect(HOST, SMTP_USERMANE, SMTP_PASSWORD);
             transport.sendMessage(mg, mg.getAllRecipients());
-            JOptionPane.showMessageDialog(null, "Correo de validación enviado");
+            JOptionPane.showMessageDialog(null, "Se ha enviado un correo con su respectiva contraseña.");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error");
             System.out.println(e.getMessage());

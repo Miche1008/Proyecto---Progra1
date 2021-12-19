@@ -479,9 +479,9 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel PanelExitRegistro;
     private javax.swing.JPanel PanelIniciarSesión;
     private javax.swing.JTextField TxtApellidos;
-    private javax.swing.JPasswordField TxtContraseñaLogin;
+    public static javax.swing.JPasswordField TxtContraseñaLogin;
     private javax.swing.JTextField TxtCorreo;
-    private javax.swing.JTextField TxtNombre;
+    public static javax.swing.JTextField TxtNombre;
     private javax.swing.JTextField TxtUsuarioLogin;
     private javax.swing.JCheckBox VerContraseña2;
     private javax.swing.ButtonGroup buttonGroup1;
