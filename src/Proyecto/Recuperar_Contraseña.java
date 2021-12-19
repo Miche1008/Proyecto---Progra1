@@ -212,10 +212,8 @@ public class Recuperar_Contraseña extends javax.swing.JFrame {
 
     private void Panel_Enviar_CorreoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Panel_Enviar_CorreoMouseClicked
         try {           
-            
-            Login L = new Login();
 
-            EnvioCorreos C = new EnvioCorreos(TxtCorreoRecuperar.getText(), L.TxtNombre.getText(), L.TxtContraseñaLogin.getText());
+            EnvioCorreos C = new EnvioCorreos(TxtCorreoRecuperar.getText(), Login.TxtNombre.getText(), Login.TxtContraseñaLogin.getText());
             C.Envio_de_Correos_Recuperar_Contraseña();
             
         } catch (Exception e) {

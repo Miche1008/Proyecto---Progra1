@@ -23,6 +23,7 @@ public class Login extends javax.swing.JFrame {
     int xMouse, yMouse;
     
     public static ArrayList<Usuarios> ArrayUsuarios = new ArrayList<Usuarios>();
+    public int buscar;
 
     public static String rol;
 
@@ -402,14 +403,26 @@ public class Login extends javax.swing.JFrame {
         try {
             String rol = "";
             if (radioadministrador.isSelected()) {
-                rol = "1";
+                rol = "Administrador";
             } else if (radiousuario.isSelected()) {
-                rol = "2";
+                rol = "Usuario estándar";
             }
 
+            //String Nombre = TxtNombre.getText();
+            //String Apellidos = TxtApellidos.getText();
+            //String Correo = TxtCorreo.getText();
+            //String Usuario = TxtUsuarioLogin.getText();
+            //String Contraseña = TxtContraseñaLogin.getText();
+            
             Usuarios U = new Usuarios(TxtUsuarioLogin.getText(), TxtContraseñaLogin.getText(), TxtNombre.getText(), TxtApellidos.getText(), TxtCorreo.getText(), rol);
-
+            
             ArrayUsuarios.add(U);
+            
+            //TxtNombre.setText("");
+            //TxtApellidos.setText("");
+            //TxtCorreo.setText("");
+            //TxtUsuarioLogin.setText("");
+            //TxtContraseñaLogin.setText("");
 
             Icono icon = new Icono();
             JOptionPane.showMessageDialog(rootPane, "Usuario creado correctamente", "FastChat - Creación de usuario", JOptionPane.DEFAULT_OPTION, icon);

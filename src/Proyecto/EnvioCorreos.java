@@ -56,7 +56,7 @@ public class EnvioCorreos {
 
     static final String SUBJECT2 = "Recuperación de contraseña";
 
-    String BODY = (", Bienvenido a FastChat, ");
+    String BODY = (", bienvenido a FastChat, ");
 
     String BODY2 = (", su contraseña es: ");
 

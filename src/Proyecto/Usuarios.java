@@ -2,8 +2,8 @@ package Proyecto;
 
 public class Usuarios {
 
-    public static String usuario;
-    public static String contraseña;
+    private String usuario;
+    private String contraseña;
     private String nombre;
     private String apellido;
     private String correo;
@@ -17,6 +17,14 @@ public class Usuarios {
         this.correo = correo;
         this.rol = rol;
     }
+
+    public Usuarios(String usuario, String contraseña, String nombre, String apellido, String correo) {
+        this.usuario = usuario;
+        this.contraseña = contraseña;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.correo = correo;
+    }   
 
     public Usuarios(){
         

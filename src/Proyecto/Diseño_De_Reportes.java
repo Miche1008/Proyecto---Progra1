@@ -46,7 +46,7 @@ public class Diseño_De_Reportes {
         titulo = new Paragraph("Reporte - Creación de FastChat");
     }
 
-    public void GenerarReporte1() {
+    public void Generar_Reporte_FastChat() {
 
         try {
 
@@ -102,7 +102,7 @@ public class Diseño_De_Reportes {
 
     }
 
-    public void GenerarReporte2() {
+    public void Generar_Reporte_Usuarios() {
 
         try {
 

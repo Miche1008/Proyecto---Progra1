@@ -35,7 +35,7 @@ public class Contactos extends javax.swing.JFrame {
         
         TxtContacto1.setText(usuario);
         
-        if (Login.rol == "1") {
+        if (Login.rol == "Administrador") {
             PanelAdministardor.setVisible(true);
             LabelReporte.setVisible(true);
             Panel_Ir_A_Reportes.setVisible(true);
@@ -43,10 +43,8 @@ public class Contactos extends javax.swing.JFrame {
         }else{
             PanelAdministardor.setVisible(false);
             LabelReporte.setVisible(false);
-            Panel_Ir_A_Reportes.setVisible(false);
-            
-        }
-        
+            Panel_Ir_A_Reportes.setVisible(false);           
+        }       
     }
 
     /**
