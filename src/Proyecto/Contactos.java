@@ -154,6 +154,11 @@ public class Contactos extends javax.swing.JFrame {
         PanelContactos.add(PanelAdministardor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 344, 392, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Lista de contactos3.png"))); // NOI18N
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
         PanelContactos.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, 54));
 
         jLabel6.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
@@ -279,6 +284,10 @@ public class Contactos extends javax.swing.JFrame {
     private void TxtContacto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtContacto1ActionPerformed
        
     }//GEN-LAST:event_TxtContacto1ActionPerformed
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel5MouseClicked
 
     /**
      * @param args the command line arguments

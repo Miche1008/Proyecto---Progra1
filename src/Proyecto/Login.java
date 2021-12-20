@@ -8,6 +8,8 @@ package Proyecto;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.mail.BodyPart;
 import javax.mail.Session;
 import javax.mail.internet.MimeBodyPart;
@@ -21,14 +23,14 @@ import javax.swing.table.DefaultTableModel;
 public class Login extends javax.swing.JFrame {
 
     int xMouse, yMouse;
-    
+
     public static ArrayList<Usuarios> ArrayUsuarios = new ArrayList<Usuarios>();
     public int buscar;
 
     public static String rol;
 
-    public Login(){
-        initComponents();       
+    public Login() {
+        initComponents();
     }
 
     /**
@@ -43,10 +45,12 @@ public class Login extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel5 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         TxtUsuarioLogin = new javax.swing.JTextField();
-        TxtContraseñaLogin = new javax.swing.JPasswordField();
         VerContraseña2 = new javax.swing.JCheckBox();
         PanelExitRegistro = new javax.swing.JPanel();
         LabelExitIngreso = new javax.swing.JLabel();
@@ -65,13 +69,22 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         PanelIniciarSesión = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        TxtContraseñaLogin = new javax.swing.JPasswordField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Fondodegradado.png"))); // NOI18N
         jLabel5.setText("jLabel5");
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Fondodegradado_1.png"))); // NOI18N
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Fondodegradado_1.png"))); // NOI18N
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Fondodegradado_1.png"))); // NOI18N
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Fondodegradado_1.png"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,7 +95,7 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setText("Registre su nuevo usuario");
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 240, -1));
 
-        TxtUsuarioLogin.setBackground(new java.awt.Color(197, 219, 240));
+        TxtUsuarioLogin.setBackground(new java.awt.Color(173, 205, 234));
         TxtUsuarioLogin.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         TxtUsuarioLogin.setForeground(new java.awt.Color(102, 102, 102));
         TxtUsuarioLogin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -93,20 +106,12 @@ public class Login extends javax.swing.JFrame {
                 TxtUsuarioLoginMousePressed(evt);
             }
         });
-        jPanel3.add(TxtUsuarioLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 220, -1));
-
-        TxtContraseñaLogin.setBackground(new java.awt.Color(214, 229, 244));
-        TxtContraseñaLogin.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        TxtContraseñaLogin.setForeground(new java.awt.Color(102, 102, 102));
-        TxtContraseñaLogin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        TxtContraseñaLogin.setText("*****");
-        TxtContraseñaLogin.setBorder(null);
-        TxtContraseñaLogin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                TxtContraseñaLoginMousePressed(evt);
+        TxtUsuarioLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtUsuarioLoginActionPerformed(evt);
             }
         });
-        jPanel3.add(TxtContraseñaLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 220, -1));
+        jPanel3.add(TxtUsuarioLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 220, -1));
 
         VerContraseña2.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         VerContraseña2.setText("Visualizar contraseña");
@@ -173,7 +178,7 @@ public class Login extends javax.swing.JFrame {
 
         jPanel3.add(PanelExitRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 0, 40, 40));
 
-        TxtNombre.setBackground(new java.awt.Color(136, 182, 224));
+        TxtNombre.setBackground(new java.awt.Color(143, 187, 226));
         TxtNombre.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         TxtNombre.setForeground(new java.awt.Color(102, 102, 102));
         TxtNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -191,7 +196,7 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel3.add(TxtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 220, -1));
 
-        TxtCorreo.setBackground(new java.awt.Color(177, 207, 235));
+        TxtCorreo.setBackground(new java.awt.Color(163, 199, 231));
         TxtCorreo.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         TxtCorreo.setForeground(new java.awt.Color(102, 102, 102));
         TxtCorreo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -204,7 +209,7 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel3.add(TxtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 220, -1));
 
-        TxtApellidos.setBackground(new java.awt.Color(155, 194, 229));
+        TxtApellidos.setBackground(new java.awt.Color(152, 192, 229));
         TxtApellidos.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         TxtApellidos.setForeground(new java.awt.Color(102, 102, 102));
         TxtApellidos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -229,7 +234,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel2.setText("Seleccione su perfil de usuario:");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, -1));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, -1, -1));
 
         buttonGroup1.add(radioadministrador);
         radioadministrador.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
@@ -276,7 +281,7 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.add(PanelCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 470, 110, 40));
+        jPanel3.add(PanelCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 470, 110, 40));
 
         PanelIniciarSesión.setBackground(new java.awt.Color(91, 155, 213));
         PanelIniciarSesión.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -306,12 +311,37 @@ public class Login extends javax.swing.JFrame {
 
         jPanel3.add(PanelIniciarSesión, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 520, 110, 40));
 
-        jLabel8.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel8.setText("No se permiten caracteres especiales");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, -1));
+        TxtContraseñaLogin.setBackground(new java.awt.Color(184, 211, 237));
+        TxtContraseñaLogin.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        TxtContraseñaLogin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TxtContraseñaLogin.setBorder(null);
+        TxtContraseñaLogin.setPreferredSize(new java.awt.Dimension(55, 19));
+        TxtContraseñaLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtContraseñaLoginKeyTyped(evt);
+            }
+        });
+        jPanel3.add(TxtContraseñaLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 220, -1));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Fondodegradado_1.png"))); // NOI18N
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 580));
+        jLabel10.setText("*****");
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 350, -1, -1));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Advertencia-Contraseña.jpg.png"))); // NOI18N
+        jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 40, 50));
+
+        jLabel13.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel13.setText("Contraseña:");
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, -1, -1));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Fondodegradado_1.png"))); // NOI18N
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 580));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -389,11 +419,6 @@ public class Login extends javax.swing.JFrame {
         TxtUsuarioLogin.setForeground(Color.black);
     }//GEN-LAST:event_TxtUsuarioLoginMousePressed
 
-    private void TxtContraseñaLoginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtContraseñaLoginMousePressed
-        TxtContraseñaLogin.setText("");
-        TxtContraseñaLogin.setForeground(Color.black);
-    }//GEN-LAST:event_TxtContraseñaLoginMousePressed
-
     private void radioadministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioadministradorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_radioadministradorActionPerformed
@@ -412,7 +437,7 @@ public class Login extends javax.swing.JFrame {
             }
 
             Usuarios U = new Usuarios(TxtUsuarioLogin.getText(), TxtContraseñaLogin.getText(), TxtNombre.getText(), TxtApellidos.getText(), TxtCorreo.getText(), rol);
-            
+
             ArrayUsuarios.add(U);
 
             Icono icon = new Icono();
@@ -441,6 +466,28 @@ public class Login extends javax.swing.JFrame {
     private void PanelExitRegistroMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelExitRegistroMouseMoved
         // TODO add your handling code here:
     }//GEN-LAST:event_PanelExitRegistroMouseMoved
+
+    private void TxtContraseñaLoginKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtContraseñaLoginKeyTyped
+        
+        char validar = evt.getKeyChar();
+        
+        if (!(Character.isLetterOrDigit(validar))) {
+            JOptionPane.showMessageDialog(rootPane, "No se permiten ingresar caracteres especiales.");
+            getToolkit().beep();
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_TxtContraseñaLoginKeyTyped
+
+    private void TxtUsuarioLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtUsuarioLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtUsuarioLoginActionPerformed
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+        
+        JOptionPane.showMessageDialog(rootPane, "No se permiten caracteres especiales.");
+        
+    }//GEN-LAST:event_jLabel12MouseClicked
 
     /**
      * @param args the command line arguments
@@ -490,11 +537,16 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JCheckBox VerContraseña2;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
