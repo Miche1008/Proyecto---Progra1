@@ -373,12 +373,10 @@ public class Ingreso extends javax.swing.JFrame {
         
         for (int i = 0; i < Login.ArrayUsuarios.size() ; i++) {
             if (Login.ArrayUsuarios.get(i).getUsuario().equals(usuario) && Login.ArrayUsuarios.get(i).getContraseña().equals(contraseña)) {
-               //JOptionPane.showMessageDialog(rootPane, "Bienvenido a Fastchat");
                encontrar = true;
                Login.rol = Login.ArrayUsuarios.get(i).getRol();
                break;
             }else{  
-               //JOptionPane.showMessageDialog(rootPane, "Informacion Incorrecta");
                encontrar= false;
         }           
            
@@ -453,7 +451,7 @@ if (encontrar) {
     private javax.swing.JPanel PanelOlvidarContraseña;
     private javax.swing.JPanel PanelRegistrarse;
     private javax.swing.JPasswordField TxtContraseña;
-    private javax.swing.JTextField TxtUsuario;
+    public static javax.swing.JTextField TxtUsuario;
     private javax.swing.JCheckBox VerContraseña1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

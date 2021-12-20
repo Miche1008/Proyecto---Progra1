@@ -298,6 +298,7 @@ public class Reportes extends javax.swing.JFrame {
         Contactos C = new Contactos();
         C.setVisible(true);
         this.dispose();
+        new Contactos(Ingreso.TxtUsuario.getText()).setVisible(true);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

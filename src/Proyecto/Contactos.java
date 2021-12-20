@@ -33,7 +33,7 @@ public class Contactos extends javax.swing.JFrame {
 
         initComponents();
         
-        TxtContacto1.setText(usuario);
+        Label_Usuario_Contactos.setText(usuario);
         
         if (Login.rol == "Administrador") {
             PanelAdministardor.setVisible(true);
@@ -69,10 +69,9 @@ public class Contactos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        TxtContacto1 = new javax.swing.JTextField();
         Panel_Contactos = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        TxtContacto2 = new javax.swing.JTextField();
+        Label_Usuario_Contactos = new javax.swing.JLabel();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
@@ -91,8 +90,8 @@ public class Contactos extends javax.swing.JFrame {
         PanelContactos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Seleccione el contacto para iniciar la conversación");
-        PanelContactos.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 134, -1, -1));
+        jLabel2.setText("Presione el contacto para iniciar la conversación");
+        PanelContactos.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
 
         LabelReporte.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         LabelReporte.setText("Si deseas generar un reporte, presione \"Ir a reportes\".");
@@ -165,20 +164,6 @@ public class Contactos extends javax.swing.JFrame {
         jLabel6.setText("Lista de contactos");
         PanelContactos.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 25, -1, -1));
 
-        TxtContacto1.setEditable(false);
-        TxtContacto1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        TxtContacto1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TxtContacto1MouseClicked(evt);
-            }
-        });
-        TxtContacto1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtContacto1ActionPerformed(evt);
-            }
-        });
-        PanelContactos.add(TxtContacto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 162, 100, 28));
-
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("X");
@@ -217,9 +202,14 @@ public class Contactos extends javax.swing.JFrame {
 
         PanelContactos.add(Panel_Contactos, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 30, 30));
 
-        TxtContacto2.setEditable(false);
-        TxtContacto2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        PanelContactos.add(TxtContacto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 100, 30));
+        Label_Usuario_Contactos.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        Label_Usuario_Contactos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Label_Usuario_Contactos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Label_Usuario_ContactosMouseClicked(evt);
+            }
+        });
+        PanelContactos.add(Label_Usuario_Contactos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 90, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -246,13 +236,6 @@ public class Contactos extends javax.swing.JFrame {
             Logger.getLogger(Contactos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_Panel_Ir_A_ReportesMouseClicked
-
-    private void TxtContacto1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TxtContacto1MouseClicked
-        
-        new FastChat(TxtContacto1.getText()).setVisible(true);  
-        this.dispose();
-        
-    }//GEN-LAST:event_TxtContacto1MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         
@@ -281,13 +264,16 @@ public class Contactos extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jLabel7MouseDragged
 
-    private void TxtContacto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtContacto1ActionPerformed
-       
-    }//GEN-LAST:event_TxtContacto1ActionPerformed
-
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void Label_Usuario_ContactosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Label_Usuario_ContactosMouseClicked
+        
+        new FastChat(Label_Usuario_Contactos.getText()).setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_Label_Usuario_ContactosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -325,13 +311,12 @@ public class Contactos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel LabelReporte;
-    private javax.swing.JPanel PanelAdministardor;
+    public static javax.swing.JLabel LabelReporte;
+    private javax.swing.JLabel Label_Usuario_Contactos;
+    public static javax.swing.JPanel PanelAdministardor;
     private javax.swing.JPanel PanelContactos;
     private javax.swing.JPanel Panel_Contactos;
-    private javax.swing.JPanel Panel_Ir_A_Reportes;
-    private javax.swing.JTextField TxtContacto1;
-    private javax.swing.JTextField TxtContacto2;
+    public static javax.swing.JPanel Panel_Ir_A_Reportes;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
     private javax.swing.JLabel jLabel1;
