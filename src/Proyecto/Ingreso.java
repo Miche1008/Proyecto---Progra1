@@ -5,7 +5,14 @@
  */
 package Proyecto;
 
+import static Proyecto.FastChat.S;
+import static Proyecto.FastChat.Text_Area_Mensaje;
+import static Proyecto.FastChat.entrada;
+import static Proyecto.FastChat.salida;
 import java.awt.Color;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.net.Socket;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -439,6 +446,23 @@ if (encontrar) {
                 new Ingreso().setVisible(true);
             }
         });
+        
+        try {
+
+            S = new Socket("192.168.0.111", 4444);
+            entrada = new DataInputStream(S.getInputStream());
+            salida = new DataOutputStream(S.getOutputStream());
+
+            String mensaje = "";
+
+            while (!mensaje.equals("Exit")) {
+
+                mensaje = entrada.readUTF();
+                Text_Area_Mensaje.setText(Text_Area_Mensaje.getText().trim() + "\n" + "\nLuilli: " + mensaje + "\n");
+            }
+
+        } catch (Exception e) {
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

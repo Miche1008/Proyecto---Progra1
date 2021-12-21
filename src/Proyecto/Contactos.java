@@ -72,6 +72,7 @@ public class Contactos extends javax.swing.JFrame {
         Panel_Contactos = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         Label_Usuario_Contactos = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
@@ -140,17 +141,17 @@ public class Contactos extends javax.swing.JFrame {
             .addGroup(PanelAdministardorLayout.createSequentialGroup()
                 .addGap(112, 112, 112)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
         PanelAdministardorLayout.setVerticalGroup(
             PanelAdministardorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAdministardorLayout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
+                .addContainerGap(33, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(24, 24, 24))
         );
 
-        PanelContactos.add(PanelAdministardor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 344, 392, -1));
+        PanelContactos.add(PanelAdministardor, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 344, 410, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Lista de contactos3.png"))); // NOI18N
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -189,18 +190,19 @@ public class Contactos extends javax.swing.JFrame {
         Panel_Contactos.setLayout(Panel_ContactosLayout);
         Panel_ContactosLayout.setHorizontalGroup(
             Panel_ContactosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_ContactosLayout.createSequentialGroup()
-                .addGap(0, 8, Short.MAX_VALUE)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(Panel_ContactosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Panel_ContactosLayout.setVerticalGroup(
             Panel_ContactosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Panel_ContactosLayout.createSequentialGroup()
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1, Short.MAX_VALUE))
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
-        PanelContactos.add(Panel_Contactos, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 30, 30));
+        PanelContactos.add(Panel_Contactos, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 30, 30));
 
         Label_Usuario_Contactos.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         Label_Usuario_Contactos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -209,7 +211,10 @@ public class Contactos extends javax.swing.JFrame {
                 Label_Usuario_ContactosMouseClicked(evt);
             }
         });
-        PanelContactos.add(Label_Usuario_Contactos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 90, 30));
+        PanelContactos.add(Label_Usuario_Contactos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 90, 30));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Fondodegradado_1.png"))); // NOI18N
+        PanelContactos.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 550));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -321,6 +326,7 @@ public class Contactos extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

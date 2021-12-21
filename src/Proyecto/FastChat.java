@@ -50,6 +50,7 @@ public class FastChat extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Text_Area_Envío_Mensajes = new javax.swing.JTextPane();
         Label_Usuario = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Fondodegradado_1.png"))); // NOI18N
 
@@ -133,7 +134,10 @@ public class FastChat extends javax.swing.JFrame {
         Panel_FastChat.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 670, 130));
 
         Label_Usuario.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        Panel_FastChat.add(Label_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 30));
+        Panel_FastChat.add(Label_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 90, 30));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Fondodegradado_1.png"))); // NOI18N
+        Panel_FastChat.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 560));
 
         getContentPane().add(Panel_FastChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 560));
 
@@ -162,7 +166,6 @@ public class FastChat extends javax.swing.JFrame {
     private void BotónAtrásFastChatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotónAtrásFastChatActionPerformed
 
         Contactos Co = new Contactos();
-        Co.setVisible(true);
         this.dispose();
 
         if (Login.rol == "Administrador") {
@@ -266,6 +269,7 @@ public class FastChat extends javax.swing.JFrame {
     static javax.swing.JTextPane Text_Area_Envío_Mensajes;
     static javax.swing.JTextArea Text_Area_Mensaje;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
