@@ -118,7 +118,7 @@ public class FastChat extends javax.swing.JFrame {
                 BotónAtrásFastChatActionPerformed(evt);
             }
         });
-        Panel_FastChat.add(BotónAtrásFastChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 500, 77, -1));
+        Panel_FastChat.add(BotónAtrásFastChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 500, 77, -1));
 
         BotónEnviarFastChat.setText("Enviar");
         BotónEnviarFastChat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -127,7 +127,7 @@ public class FastChat extends javax.swing.JFrame {
                 BotónEnviarFastChatActionPerformed(evt);
             }
         });
-        Panel_FastChat.add(BotónEnviarFastChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 500, 84, -1));
+        Panel_FastChat.add(BotónEnviarFastChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 500, 84, -1));
 
         jScrollPane1.setViewportView(Text_Area_Envío_Mensajes);
 

@@ -390,7 +390,7 @@ public class Ingreso extends javax.swing.JFrame {
     }                                             
 if (encontrar) {
     JOptionPane.showMessageDialog(rootPane, "Bienvenido a Fastchat");
-    new Contactos(TxtUsuario.getText()).setVisible(true);    
+    new Contactos(TxtUsuario.getText()).setVisible(true);   
     this.dispose();
     
 }else{

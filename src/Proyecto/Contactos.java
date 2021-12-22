@@ -90,7 +90,7 @@ public class Contactos extends javax.swing.JFrame {
         PanelContactos.setForeground(new java.awt.Color(204, 204, 204));
         PanelContactos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel2.setText("Presione el contacto para iniciar la conversación");
         PanelContactos.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
 
